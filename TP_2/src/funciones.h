@@ -73,5 +73,16 @@ int verifyConfirmation(char* mensaje);
  *
  */
 int isValidSalary(char*cadena,int length);
+/**
+ * @fn int isValidName(char*, int)
+ * @brief Checks that the string is only comprised of letters.
+ *
+ * @param cadena The string entered.
+ * @param length The character length of the string.
+ * @return int retorno -1 if the string is empty or the length is invalid.
+ *                     0 if it finds something that is not a letter/space/'\0'.
+ *                     1 if it does not find anything that isn't a letter.
+ */
+int isValidName(char*cadena,int length);
 
 #endif /* FUNCIONES_H_ */

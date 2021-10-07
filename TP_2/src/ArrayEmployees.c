@@ -227,20 +227,28 @@ int operateMainMenu(Employee*lista,int length){
 					printf("Cargar Empleado\n");
 					//Carga nombre
 					getString(nombreCarga, "Ingrese el nombre del empleado: ","Error en el ingreso del nombre (no puede ser mayor a 51 caracteres). Reingrese el nombre: " , 51);
+					while(!isValidName(nombreCarga, 51)){
+						printf("Error, se ingresaron caracteres no validos para el nombre.\n");
+						getString(nombreCarga, "Reingrese el nombre del empleado: ","Error en el ingreso del nombre (no puede ser mayor a 51 caracteres). Reingrese el nombre: " , 51);
+					}
 					//Carga apellido
 					getString(apellidoCarga, "Ingrese el apellido del empleado: ","Error en el ingreso del apellido (no puede ser mayor a 51 caracteres). Reingrese el apellido: " , 51);
+					while(!isValidName(apellidoCarga, 51)){
+						printf("Error, se ingresaron caracteres no validos para el apellido.\n");
+						getString(apellidoCarga, "Reingrese el apellido del empleado: ","Error en el ingreso del apellido (no puede ser mayor a 51 caracteres). Reingrese el apellido: " , 51);
+					}
 					//Carga salario
 					getString(salarioCarga, "Ingrese el salario del empleado: ","Error en el ingreso del salario (no puede ser negativo o mayor a 500000). Reingrese el salario: " , 7);
 					while(!isValidSalary(salarioCarga, 7)){
-						printf("Error, salario invalido (debe ser positivo y menor a $500000)\n");
-						getString(salarioCarga, "Ingrese el salario del empleado: ","Error en el ingreso del salario (no puede ser negativo o mayor a 500000). Reingrese el salario: " , 7);
+						printf("Error, se ingresaron caracteres no validos para el salario.\n");
+						getString(salarioCarga, "Reingrese el salario del empleado: ","Error en el ingreso del salario (no puede ser negativo o mayor a 500000). Reingrese el salario: " , 7);
 					}
 					salarioCargado = atof(salarioCarga);
 					while(salarioCargado > 500000){
 						printf("Error, no debe ser mayor a $500000\n");
 						getString(salarioCarga, "Ingrese el salario del empleado: ","Error en el ingreso del salario (no puede ser negativo o mayor a 500000). Reingrese el salario: " , 7);
 						while(!isValidSalary(salarioCarga, 7)){
-							printf("Error, salario invalido (debe ser positivo y menor a $500000)\n");
+							printf("Error, se ingresaron caracteres no validos para el salario.\n");
 							getString(salarioCarga, "Ingrese el salario del empleado: ","Error en el ingreso del salario (no puede ser negativo o mayor a 500000). Reingrese el salario: " , 7);
 						}
 						salarioCargado = atof(salarioCarga);
@@ -364,7 +372,10 @@ int operateModificationsSubMenu(Employee*lista,int length) {
 					printf("Empleado a modificar:\n%-5s %-20s %-20s %-20s %-20s\n", "ID", "Nombre", "Apellido", "Salario", "Sector");
 					printf("%-5d %-20s %-20s $%-20.2f %-20d\n", lista[index].id, lista[index].name, lista[index].lastName, lista[index].salary, lista[index].sector);
 					getString(auxEmpleado.name, "Ingrese el nombre del empleado: ", "Error. El nombre no debe ser mayor a 51 caracteres", 51);
-
+					while(!isValidName(auxEmpleado.name, 51)){
+						printf("Error, se ingresaron caracteres no validos para el nombre.\n");
+						getString(auxEmpleado.name, "Reingrese el nombre del empleado: ","Error en el ingreso del nombre (no puede ser mayor a 51 caracteres). Reingrese el nombre: " , 51);
+					}
 					printf("\nEmpleado luego de la modificacion:\n%-5s %-20s %-20s %-20s %-20s\n", "ID", "Nombre", "Apellido", "Salario", "Sector");
 					printf("%-5d %-20s %-20s $%-20.2f %-20d\n", auxEmpleado.id, auxEmpleado.name, auxEmpleado.lastName, auxEmpleado.salary, auxEmpleado.sector);
 					if(!verifyConfirmation("Modificar Nombre? S para confirmar, N para regresar: ")){
@@ -381,7 +392,10 @@ int operateModificationsSubMenu(Employee*lista,int length) {
 					printf("Empleado a modificar:\n%-5s %-20s %-20s %-20s %-20s\n", "ID", "Nombre", "Apellido", "Salario", "Sector");
 					printf("%-5d %-20s %-20s $%-20.2f %-20d\n", lista[index].id, lista[index].name, lista[index].lastName, lista[index].salary, lista[index].sector);
 					getString(auxEmpleado.lastName, "Ingrese el apellido del empleado: ", "Error. El apellido no debe ser mayor a 51 caracteres", 51);
-
+					while(!isValidName(auxEmpleado.lastName, 51)){
+						printf("Error, se ingresaron caracteres no validos para el apellido.\n");
+						getString(auxEmpleado.lastName, "Reingrese el apellido del empleado: ","Error en el ingreso del apellido (no puede ser mayor a 51 caracteres). Reingrese el apellido: " , 51);
+					}
 					printf("\nEmpleado luego de la modificacion:\n%-5s %-20s %-20s %-20s %-20s\n", "ID", "Nombre", "Apellido", "Salario", "Sector");
 					printf("%-5d %-20s %-20s $%-20.2f %-20d\n", auxEmpleado.id, auxEmpleado.name, auxEmpleado.lastName, auxEmpleado.salary, auxEmpleado.sector);
 					if(!verifyConfirmation("Modificar Apellido? S para confirmar, N para regresar: ")){

@@ -106,4 +106,21 @@ int isValidSalary(char*cadena,int length){
 	}
 	return retorno;
 }
-
+int isValidName(char*cadena,int length){
+	int retorno =-1;
+	int i;
+	if(cadena != NULL && length > -1){
+		retorno = 1;
+		for(i=0;i<length && cadena[i] != '\0';i++){
+			if(cadena[i] == ' '){
+				continue;
+			}
+			if((cadena[i] < 'A' || cadena[i] > 'Z') && (cadena[i] < 'a' || cadena[i] > 'z') && (cadena[i] > 'ñ'))
+			{
+				retorno =0;
+				break;
+			}
+		}
+	}
+	return retorno;
+}
