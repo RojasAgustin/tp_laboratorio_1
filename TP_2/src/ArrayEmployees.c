@@ -122,8 +122,9 @@ int sortEmployees (Employee* lista, int length, int order){
 	int i;
 	int flagSwap;
 	int nuevoLimite;
-	nuevoLimite = length-1;
 	Employee auxEmpleado;
+	nuevoLimite = length-1;
+
 	if(lista != NULL && length > -1) {
 		do{
 			flagSwap =0;

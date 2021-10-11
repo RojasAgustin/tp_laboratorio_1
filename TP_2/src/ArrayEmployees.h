@@ -21,6 +21,7 @@ typedef struct {
 	int sector;
 	int isEmpty;
 }Employee;
+
 /**
  * @fn int initEmployees(Employee*, int)
  * @brief To indicate that all positions in the array are empty, this function sets the flag (isEmpty) to TRUE
@@ -39,8 +40,8 @@ int initEmployees(Employee* lista,int length);
  * @param lista Employee* -- Pointer to array of employees
  * @param length int -- Array length
  * @param id int -- Employee's ID
- * @param name char* -- Employee's name
- * @param lastName char* -- Employee's surname
+ * @param name[] char -- Employee's name
+ * @param lastName[] char -- Employee's surname
  * @param salary float -- Employee's salary
  * @param sector int -- Employee's sector
  * @return retorno int -- -1 if error (NULL array or invalid length) or user cancels the upload.
@@ -142,8 +143,8 @@ int operateModificationsSubMenu(Employee*lista, int length);
  * @fn int setSortingOrder(char*)
  * @brief Sets order to ascending(1) or descending(0)
  *
- * @param mensaje Message that informs the user about what is being asked
- * @return int orden The number entered
+ * @param mensaje char* -- Message that informs the user about what is being asked
+ * @return int orden -- The number entered
  */
 int setSortingOrder(char*mensaje);
 
