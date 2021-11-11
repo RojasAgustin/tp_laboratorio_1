@@ -286,11 +286,6 @@ int controller_saveAsText(char* path , LinkedList* pArrayListEmployee)
 		pFile = fopen(path,"w");
 		if(pFile!=NULL){
 			for(int i=0;i<ll_len(pArrayListEmployee);i++){
-				/*if(i==0){
-					fprintf(pFile,"%s,%s,%s,%s\n","ID","Nombre","Horas Trabajadas","Sueldo");//Cabecera. Da error al abrir archivo con excel, no con bloc de notas o wordpad.
-																							//Por las dudas lo comento pero al cargar los datos nuevamente se va a saltear la primera linea ya que no hay cabecera para el fscanf
-																							//Si se descomenta funciona bien pero excel no abre el archivo
-				}*/
 				pEmpleado = ll_get(pArrayListEmployee, i);
 				fprintf(pFile,"%d,%s,%d,%d\n",pEmpleado->id,pEmpleado->nombre,pEmpleado->horasTrabajadas,pEmpleado->sueldo);//Datos
 			}
