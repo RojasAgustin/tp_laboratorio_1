@@ -252,7 +252,7 @@ int employee_operateModificationsSubMenu(Employee* this){
 					getString(auxSueldo, "Reingrese el sueldo del empleado: ","Error en el ingreso del sueldo (no puede ser mayor a 8 cifras). Reingrese: " , 8);
 				}
 				auxEmpleado.sueldo = atoi(auxSueldo);
-				printf("Empleado luego de la modificacion:\n%-10s %-25s %-10s %-10s\n", "ID", "Nombre", "Horas", "Sueldo");
+				printf("Empleado luego de la modificacion:\n%-10s %-21s %-10s %-10s\n", "ID", "Nombre", "Horas", "Sueldo");
 				printf("%-10d %-21s %-10d %-10d\n",auxEmpleado.id,auxEmpleado.nombre,auxEmpleado.horasTrabajadas,auxEmpleado.sueldo);
 				if(!verifyConfirmation("Modificar Sueldo? S para confirmar, N para regresar: ")){
 					this->sueldo = auxEmpleado.sueldo;
@@ -267,6 +267,7 @@ int employee_operateModificationsSubMenu(Employee* this){
 				break;
 			}
 		}while(*opcion != 4);
+		employee_delete(&auxEmpleado);
 		retorno =0;
 	}
 	return retorno;
