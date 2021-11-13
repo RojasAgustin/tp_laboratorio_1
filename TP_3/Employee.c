@@ -278,7 +278,9 @@ int employee_operateModificationsSubMenu(Employee* this){
  *
  * @param empleadoUno void* El primer empleado que se compara
  * @param empleadoDos void* El segundo empleado que se compara
- * @return retorno int
+ * @return retorno int 1 El Id del primer empleado es mayor
+ * 					   0 Si son iguales
+ * 					   -1 Si el ID del segundo es mayor
  */
 int employee_sortById(void* empleadoUno,void* empleadoDos){
 	int retorno =1;
@@ -306,7 +308,9 @@ int employee_sortById(void* empleadoUno,void* empleadoDos){
  *
  * @param empleadoUno void* El primer empleado que se compara
  * @param empleadoDos void* El segundo empleado que se compara
- * @return retorno int
+ * @return retorno int 1 El nombre del primer empleado es mayor
+ * 					   0 Si son iguales
+ * 					   -1 Si el nombre del segundo es mayor
  */
 int employee_sortByName(void* empleadoUno,void* empleadoDos){
 	int retorno =1;
@@ -334,7 +338,9 @@ int employee_sortByName(void* empleadoUno,void* empleadoDos){
  *
  * @param empleadoUno void* El primer empleado que se compara
  * @param empleadoDos void* El segundo empleado que se compara
- * @return retorno int
+ * @return retorno int 1 Las horas del primer empleado son mayores
+ * 					   0 Si son iguales
+ * 					   -1 Si las horas del segundo son mayores
  */
 int employee_sortByHours(void* empleadoUno,void* empleadoDos){
 	int retorno =1;
@@ -362,7 +368,9 @@ int employee_sortByHours(void* empleadoUno,void* empleadoDos){
  *
  * @param empleadoUno void* El primer empleado que se compara
  * @param empleadoDos void* El segundo empleado que se compara
- * @return retorno int
+ * @return retorno int 1 El sueldo del primer empleado es mayor
+ * 					   0 Si son iguales
+ * 					   -1 Si el sueldo del segundo es mayor
  */
 int employee_sortBySalary(void* empleadoUno,void* empleadoDos){
 	int retorno =1;
