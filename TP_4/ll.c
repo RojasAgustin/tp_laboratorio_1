@@ -109,15 +109,16 @@ static int addNode(LinkedList* this, int nodeIndex,void* pElement)
 				this->pFirstNode = auxNode;
 			}
 			else{
-				//Al final
-				if(nodeIndex == tam -1){
-					temp = getNode(this, nodeIndex);
-					temp->pNextNode = auxNode;
-				}
-				else{
-					//En el medio
+				//En el medio
+				if(nodeIndex > -1 && nodeIndex < tam+1){
 					temp = getNode(this, nodeIndex-1);
 					auxNode->pNextNode = temp->pNextNode;
+					temp->pNextNode = auxNode;
+
+				}
+				else{
+					//Al final
+					temp = getNode(this, nodeIndex);
 					temp->pNextNode = auxNode;
 				}
 			}
