@@ -161,7 +161,7 @@ int ll_add(LinkedList* this, void* pElement)
     return returnAux;
 }
 
-/** \brief Permite realizar el test de la funcion addNode la cual es privada
+/** \brief  Devuelve el elemento guardado en la posicion de la lista que recibe como parametro
  *
  * \param this LinkedList* Puntero a la lista
  * \param nodeIndex int Ubicacion del elemento a obtener
@@ -417,12 +417,6 @@ int ll_containsAll(LinkedList* this,LinkedList* this2)
     			returnAux = 0;
     			break;
     		}
-    		/*else{
-    			if(ll_contains(this, auxElemento) == 1){
-    				returnAux = 1;
-    				continue;
-    			}
-    		}   ???? xq no :( */
     	}
     }
     return returnAux;
