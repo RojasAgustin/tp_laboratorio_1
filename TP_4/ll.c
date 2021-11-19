@@ -334,8 +334,9 @@ int ll_indexOf(LinkedList* this, void* pElement)
 int ll_isEmpty(LinkedList* this)
 {
     int returnAux = -1;
+    int tam = ll_len(this);
     if(this!=NULL){
-    	if(this->size == 0){
+    	if(tam == 0){
     		returnAux = 1;
     	}
     	else{
