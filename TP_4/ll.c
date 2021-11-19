@@ -177,7 +177,7 @@ void* ll_get(LinkedList* this, int index)
     void* returnAux = NULL;
     Node* auxNode;
 	int tam = ll_len(this);
-    if(this!=NULL && index > -1 && index < tam+1){
+    if(this!=NULL && index > -1 && index < tam){
     	auxNode = getNode(this, index);
     	if(auxNode != NULL){
     		returnAux = auxNode->pElement;
@@ -201,7 +201,7 @@ int ll_set(LinkedList* this, int index,void* pElement)
     int returnAux = -1;
 	int tam = ll_len(this);
     Node* auxNode;
-    if(this!=NULL&& index >-1 && index < tam+1){
+    if(this!=NULL&& index >-1 && index < tam){
     	auxNode = getNode(this, index);
     	if(auxNode!=NULL){
     		auxNode->pElement = pElement; //Cambia el elemento por el que recibe como parametro
@@ -226,7 +226,7 @@ int ll_remove(LinkedList* this,int index)
 	int tam = ll_len(this);
     Node* nodeAEliminar;
     Node* nodeAnterior;
-    if(this!=NULL&& index >-1 && index < tam +1){
+    if(this!=NULL&& index >-1 && index < tam){
     	nodeAEliminar = getNode(this, index);
     	if(nodeAEliminar!=NULL){
     		if(index == 0){
@@ -358,7 +358,7 @@ int ll_push(LinkedList* this, int index, void* pElement)
 {
     int returnAux = -1;
     int tam = ll_len(this);
-    if(this!=NULL && index > -1 && index < tam+1){
+    if(this!=NULL && index > -1 && index < tam){
     	returnAux = addNode(this, index, pElement);
     }
     return returnAux;
@@ -377,7 +377,7 @@ void* ll_pop(LinkedList* this,int index)
 {
     void* returnAux = NULL;
     int tam = ll_len(this);
-    if(this!=NULL && index > -1 && index < tam+1){
+    if(this!=NULL && index > -1 && index < tam){
     	returnAux = ll_get(this, index);
     	ll_remove(this, index);
     }
