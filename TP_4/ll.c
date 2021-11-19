@@ -450,7 +450,7 @@ LinkedList* ll_subList(LinkedList* this,int from,int to)
     LinkedList* cloneArray = NULL;
     int tam = ll_len(this);
     void* auxElemento;
-    if(!(this == NULL || from < 0 || from > tam || to < from+1 || to > tam)){
+    if(!(this == NULL || from < 0 || from > tam || to <= from || to > tam)){
     	cloneArray = ll_newLinkedList();
     	if(cloneArray != NULL){
     		for(int i = from;i<to;i++){
@@ -494,19 +494,25 @@ int ll_sort(LinkedList* this, int (*pFunc)(void* ,void*), int order)
     int tam = ll_len(this);
     void* elementoUno;
     void* elementoDos;
+    int flagSwap;
+    int nuevoLimite;
     if(this !=NULL && pFunc != NULL && order > -1 && order < 2){
-    	for(int i =0;i<tam-1;i++){
-    		for(int j=i+1;j<tam;j++){
-    			elementoUno = ll_get(this, i);
-    			elementoDos = ll_get(this, j);
-    			if((pFunc(elementoUno,elementoDos) > 0 && order == 1) || (pFunc(elementoUno,elementoDos) < 0 && order == 0)){
-    				ll_set(this, i, elementoDos);
-    				ll_set(this, j, elementoUno);
-    			}
-    		}
-    	}
+    	nuevoLimite = tam-1;
+    	do{
+    		flagSwap = 0;
+			for(int i =0;i<nuevoLimite;i++){
+				elementoUno = ll_get(this, i);
+				elementoDos = ll_get(this, i+1);
+				if((pFunc(elementoUno,elementoDos) > 0 && order == 1) || (pFunc(elementoUno,elementoDos) < 0 && order == 0)){
+					ll_set(this, i, elementoDos);
+					ll_set(this, i+1, elementoUno);
+					flagSwap = 1;
+				}
+			}
+    	}while(flagSwap);
     	returnAux = 0;
     }
     return returnAux;
 }
+
 
