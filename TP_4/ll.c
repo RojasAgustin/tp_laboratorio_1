@@ -112,7 +112,7 @@ static int addNode(LinkedList* this, int nodeIndex,void* pElement)
 			}
 			else{
 				//En el medio
-				if(nodeIndex > -1 && nodeIndex < tam+1){
+				if(nodeIndex > 0 && nodeIndex < tam){
 					temp = getNode(this, nodeIndex-1);
 					auxNode->pNextNode = temp->pNextNode;
 					temp->pNextNode = auxNode;
@@ -120,7 +120,7 @@ static int addNode(LinkedList* this, int nodeIndex,void* pElement)
 				}
 				else{
 					//Al final
-					temp = getNode(this, nodeIndex);
+					temp = getNode(this, nodeIndex-1);
 					temp->pNextNode = auxNode;
 				}
 			}
