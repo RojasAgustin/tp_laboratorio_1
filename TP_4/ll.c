@@ -58,6 +58,7 @@ int ll_len(LinkedList* this)
  */
 static Node* getNode(LinkedList* this, int nodeIndex)
 {
+	//ll_get llama a getNode para conseguir el Elemento guardado.
 	Node* auxNode = NULL;
 	int tam = ll_len(this);
 	if(this!=NULL&& nodeIndex>-1 && nodeIndex < tam){
@@ -94,6 +95,7 @@ Node* test_getNode(LinkedList* this, int nodeIndex)
  */
 static int addNode(LinkedList* this, int nodeIndex,void* pElement)
 {
+	//ll_add llama a esta funcion para agregar un nodo a la lista. ll_push tambien en una posicion particular de la lista.
     int returnAux = -1;
 	int tam = ll_len(this);
     Node* auxNode;
@@ -172,11 +174,10 @@ int ll_add(LinkedList* this, void* pElement)
  */
 void* ll_get(LinkedList* this, int index)
 {
-	//Doxygen esta mal??
     void* returnAux = NULL;
     Node* auxNode;
 	int tam = ll_len(this);
-    if(this!=NULL && index > -1 && index < tam){
+    if(this!=NULL && index > -1 && index < tam+1){
     	auxNode = getNode(this, index);
     	if(auxNode != NULL){
     		returnAux = auxNode->pElement;
@@ -200,10 +201,10 @@ int ll_set(LinkedList* this, int index,void* pElement)
     int returnAux = -1;
 	int tam = ll_len(this);
     Node* auxNode;
-    if(this!=NULL&& index >-1 && index < tam){
+    if(this!=NULL&& index >-1 && index < tam+1){
     	auxNode = getNode(this, index);
     	if(auxNode!=NULL){
-    		auxNode->pElement = pElement;
+    		auxNode->pElement = pElement; //Cambia el elemento por el que recibe como parametro
     		returnAux =0;
     	}
     }
@@ -225,7 +226,7 @@ int ll_remove(LinkedList* this,int index)
 	int tam = ll_len(this);
     Node* nodeAEliminar;
     Node* nodeAnterior;
-    if(this!=NULL&& index >-1 && index < tam){
+    if(this!=NULL&& index >-1 && index < tam +1){
     	nodeAEliminar = getNode(this, index);
     	if(nodeAEliminar!=NULL){
     		if(index == 0){
@@ -234,7 +235,7 @@ int ll_remove(LinkedList* this,int index)
     			nodeAEliminar = NULL;
     			this->size--;
     		}
-    		else{
+    		else if(index > 0 && index < tam){
     			nodeAnterior = getNode(this, index-1);
     			if(nodeAnterior!=NULL){
     				nodeAnterior->pNextNode = nodeAEliminar->pNextNode;
@@ -242,6 +243,16 @@ int ll_remove(LinkedList* this,int index)
     				nodeAEliminar = NULL;
     				this->size--;
     			}
+    		}
+    		else{
+    			nodeAnterior = getNode(this, index-1);
+    			if(nodeAnterior!=NULL){
+    				nodeAnterior->pNextNode = NULL;
+    				free(nodeAEliminar);
+    				nodeAEliminar = NULL;
+    				this->size--;
+    			}
+
     		}
     		returnAux = 0;
     	}
