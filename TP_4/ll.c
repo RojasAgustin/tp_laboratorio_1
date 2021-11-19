@@ -358,7 +358,7 @@ int ll_push(LinkedList* this, int index, void* pElement)
 {
     int returnAux = -1;
     int tam = ll_len(this);
-    if(this!=NULL && index > -1 && index < tam){
+    if(this!=NULL && index > -1 && index < tam+1){
     	returnAux = addNode(this, index, pElement);
     }
     return returnAux;
